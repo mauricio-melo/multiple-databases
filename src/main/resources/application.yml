@@ -1,29 +1,17 @@
+customers-datasource:
+  password: root
+  jdbc-url: jdbc:mysql://localhost:3306/customers?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
+  username: root
+users-datasource:
+  password: root
+  jdbc-url: jdbc:mysql://localhost:3306/users?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
+  username: root
+
 spring:
-  customers-datasource:
-    password: root
-    jdbc-url: jdbc:mysql://localhost:3306/customers?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
-    username: root
-  users-datasource:
-    password: root
-    jdbc-url: jdbc:mysql://localhost:3306/users?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
-    username: root
   jpa:
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: update
-
-#customers:
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    password: root
-#    url: jdbc:mysql://localhost:3306/customers?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
-#    username: root
-#users:
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    password: root
-#    url: jdbc:mysql://localhost:3306/users?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
-#    username: root
+      ddl-auto: none

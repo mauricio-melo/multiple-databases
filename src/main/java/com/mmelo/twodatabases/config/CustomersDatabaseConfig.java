@@ -1,6 +1,5 @@
 package com.mmelo.twodatabases.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -8,7 +7,6 @@ import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -28,7 +26,7 @@ import javax.sql.DataSource;
 public class CustomersDatabaseConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.customers-datasource")
+    @ConfigurationProperties(prefix = "customers-datasource")
     @Primary
     public DataSource customerDatasource() {
         return DataSourceBuilder.create().build();
@@ -39,7 +37,6 @@ public class CustomersDatabaseConfig {
     public LocalContainerEntityManagerFactoryBean customersEntityManagerFactory(
             EntityManagerFactoryBuilder builder,
             @Qualifier("customerDatasource") DataSource dataSource) {
-
         return builder
                 .dataSource(dataSource)
                 .packages("com.mmelo.twodatabases.customers.domain")

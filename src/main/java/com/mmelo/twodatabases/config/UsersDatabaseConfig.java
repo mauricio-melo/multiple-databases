@@ -1,8 +1,6 @@
 package com.mmelo.twodatabases.config;
 
-import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -27,7 +25,7 @@ import javax.sql.DataSource;
 public class UsersDatabaseConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.users-datasource")
+    @ConfigurationProperties(prefix = "users-datasource")
     public DataSource usersDatasource() {
         return DataSourceBuilder.create().build();
     }
@@ -36,7 +34,6 @@ public class UsersDatabaseConfig {
     public LocalContainerEntityManagerFactoryBean usersEntityManagerFactory(
             EntityManagerFactoryBuilder builder,
             @Qualifier("usersDatasource") DataSource dataSource) {
-
         return builder
                 .dataSource(dataSource)
                 .packages("com.mmelo.twodatabases.users.domain")
